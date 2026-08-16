@@ -120,31 +120,6 @@ print(processor.decode(out[0], skip_special_tokens=True))
 
 ---
 
-## 📤 上传到 GitHub / Publishing to GitHub
-
-> ⚠️ **重要 / Important**：`model/model.safetensors` 约 **944MB**，超过 GitHub 单文件 100MB 限制，**必须使用 Git LFS**。
-> `model.safetensors` is ~**944MB**, exceeding GitHub's 100MB per-file limit — **Git LFS is required**.
-
-```bash
-git lfs install
-git init
-git add .gitattributes model/ caption.py example.py requirements.txt README.md
-git commit -m "media-caption: local BLIP image captioning"
-git remote add origin https://github.com/<username>/<repo>.git
-git push -u origin main
-```
-
-`.gitattributes` 已配置：`*.safetensors` / `*.bin` / `*.pt` / `*.onnx` 自动走 LFS。
-`.gitattributes` already routes `*.safetensors` / `*.bin` / `*.pt` / `*.onnx` through LFS.
-
-**备选方案 / Alternative**：若不想用 LFS（免费配额约 1GB），只把代码上传 GitHub，模型放到
-[HuggingFace Hub](https://huggingface.co/new)（`huggingface-cli upload`），使用方通过
-`BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")` 自动下载。
-If you'd rather avoid LFS (free quota ~1GB), push only the code to GitHub and host the model on
-HuggingFace Hub instead — consumers then download it automatically via `from_pretrained`.
-
----
-
 ## ❓ 常见问题 / FAQ
 
 - **GPU 报 `no kernel image is available`**：显卡架构与 torch 编译目标不匹配（如 Blackwell 卡 + 老 cu126 torch）。
