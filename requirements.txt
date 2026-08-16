@@ -1,0 +1,10 @@
+# Core inference stack
+transformers==4.46.3
+pillow>=10.0
+
+# Deep learning framework — install the build matching your GPU:
+#   CPU:            pip install torch torchvision
+#   NVIDIA (cu128, Blackwell/RTX 50xx): pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+#   Older NVIDIA:   pick the cu118/cu121 build matching your architecture
+torch>=2.0
+torchvision>=0.15
